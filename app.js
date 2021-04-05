@@ -1,6 +1,6 @@
 const express = require ('express');
 const app = express();
-const port = 3000;
+const puerto = process.env.PORT
 const path = require ('path');
 
 // le decimos cual es la carpeta publica
@@ -24,4 +24,6 @@ app.get('/register', (req, res) =>
 res.sendFile(path.join(__dirname, './views/register.html'))
 );
 
-app.listen(port, () => console.log("El servidor esta corriendo en el puerto "  +  port))
+app.listen(puerto || 3000, function() {
+    console.log("Servidor corriendo en el puerto 3000");
+});
